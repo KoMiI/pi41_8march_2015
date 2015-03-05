@@ -57,6 +57,11 @@ body{
 	z-index:1000;
 }
 
+.name_class  span.active:hover{
+	color:#fff;
+	background:#999;
+}
+
 .name_class ul>li>span{
 	position:absolute;
 	top: 0px;
