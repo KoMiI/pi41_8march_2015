@@ -2,9 +2,44 @@ body{
 	overflow:hidden;
 }
 
+body.aftenoon{
+ background-image:url(../img/backgr_afternoon.png);
+ background-repeat : no-repeat;
+ background-color : #C0B194;
+ background-position : center top ;
+ background-size : 75%;
+}
 
-.days{
-	
+body.night{
+ background-image:url(../img/backgr_night.png);
+ background-repeat : no-repeat;
+ background-color : #2A3E7D;
+ background-position : center top ;
+ background-size : 75%;
+}
+
+body.morning{
+ background-image:url(../img/backgr_morning.png);
+ background-repeat : no-repeat;
+ background-color : #5883E1;
+ background-position : center top ;
+ background-size : 75%;
+}
+
+body.sunrise{
+ background-image:url(../img/backgr_sunrise.png);
+ background-repeat : no-repeat;
+ background-color : #D4A7A2;
+ background-position : center top ;
+ background-size : 75%;
+}
+
+body.sunset{
+ background-image:url(../img/backgr_sunset.png);
+ background-repeat : no-repeat;
+ background-color : #783F38;
+ background-position : center top ;
+ background-size : 75%;
 }
 
 .name_class{
@@ -73,8 +108,20 @@ body{
 }
 
 
+.up{
+	width:50%;
+	margin: auto;
+	background:white;
+	margin-top:-70px;
+	height:0%;
+	-webkit-user-select: none;
+	-webkit-transition: all 0.5s linear 0s; -moz-transition: all 0.5s linear 0s; -ms-transition: all 0.5s linear 0s;	-o-transition: all 0.5s linear 0s;transition: all 0.5s linear 0s;
+}
 
-
+.down{
+	padding:150px;
+	height:100%;
+}
 
 
 

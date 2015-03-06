@@ -1,14 +1,36 @@
 window.onload = function () {
 	select_name();
+	get_css();
 }
 
 //    	global
 var select_on_off = false;
-
 // 		global
 
+function get_css()
+{
+	var datetoday = new Date();
+	var timenow = datetoday.getTime();
+	datetoday.setTime(timenow);
+	var thehour = datetoday.getHours();
+	var dis; 	
+	if (thehour > 20)
+		dis = "night";
+	else if (thehour > 17)
+		dis = "sunset";
+	else if (thehour > 12)
+		dis = "afternoon";
+	else if (thehour > 7)
+		dis = "morning";
+	else if (thehour > 4)
+		dis = "sunrise";
+	else 
+		dis = "night";
+	document.getElementsByTagName('body')[0].className = dis;
+}
+
 function select_name(){
-	var nameZ = document.getElementById('name_class').style.marginTop = window.innerHeight/4*1.5 +'px';
+	var nameZ = document.getElementById('name_class').style.marginTop = window.innerHeight/2 - 130 +'px';
 	var name = document.getElementById('name_class').getElementsByClassName('selected');
 	for(i = 0; i < name.length; i++)
 	{
@@ -77,48 +99,22 @@ function click_name(e)
 			name[i].style.left = x + "px";
 		}
 	}
-	generet();
-	xmlParser();
+	generet(e.dataset.name);
 }
 
-function generet()
+function generet(name)
 {
-	$.ajax({
-        type: "GET",
-        url: "xml/text.xml",
-        dataType: "xml",
-        success: xmlParser
-    });
-}
-
-function xmlParser(xml) {
-	var next;
-	console.log($(xml).find("start").text());
-	$(xml).find("start").each(function () {
-		console.log($(this).find("ligament").text());
-		next = next_text($(this).find("ligament").text());
-	});
-	while(next != "Null"){
-		console.log($(xml).find(next).find("text").text());
-		$("#text_class").append(textt($(xml).find(next).find("text").text()));
-		next = next_text($(xml).find(next).find("ligament").text());
-		console.log(next);
-		$("next").fadeIn(1000);
+	var a = textJSON;
+	a.texts[0]
+	var next = a.texts[0].ligament[Math.floor(Math.random()*a.texts[0].ligament.length)];
+	while (next != 0)
+	{
+		console.log(name)
+		$("#text_class").append(a.texts[next].text.replace(new RegExp("@NAME@",'g'),name) + " ");
+		var next = a.texts[next].ligament[Math.floor(Math.random()*a.texts[next].ligament.length)];
 	}
-	
+	document.getElementById('text_class').className = "up down";
 }
-
-function next_text(input){
-	console.log(input);
-	arr = input.split("\n ");
-	return arr[Math.floor(Math.random()*arr.length)];
-}
-
-function textt(input)
-{
-	return input.replace(new RegExp("@NAME@",'g'),name);
-}
-
 
 
 
