@@ -104,6 +104,7 @@ function click_name(e)
 
 function generet(name)
 {
+<<<<<<< HEAD:congratulation/js/script.js
 	var a = textJSON;
 	a.texts[0]
 	var next = a.texts[0].ligament[Math.floor(Math.random()*a.texts[0].ligament.length)];
@@ -112,10 +113,65 @@ function generet(name)
 		console.log(name)
 		$("#text_class").append(a.texts[next].text.replace(new RegExp("@NAME@",'g'),name) + " ");
 		var next = a.texts[next].ligament[Math.floor(Math.random()*a.texts[next].ligament.length)];
+=======
+	$.ajax({
+        type: "GET",
+        url: "xml/text.xml",
+        dataType: "xml",
+        success: xmlParser
+    });
+}
+
+function xmlParser(xml) {
+	var next;
+	console.log($(xml).find("start").text());
+	$(xml).find("page > *").each(function () {
+		console.log($(this).find("ligament").text().trim());
+		next = next_text($(this).find("ligament").text());
+	});
+	while(next != "Null"){
+		console.log($(xml).find(next).find("text").text());
+		$("#text_class").append(textt($(xml).find(next).find("text").text()));
+		next = next_text($(xml).find(next).find("ligament").text());
+		console.log(next);
+		$("next").fadeIn(1000);
+>>>>>>> origin/master:js/script.js
 	}
 	document.getElementById('text_class').className = "up down";
 }
 
+<<<<<<< HEAD:congratulation/js/script.js
+=======
+function textt(input)
+{
+	return input.replace(new RegExp("@NAME@",'g'),name);
+}
+
+function get_css()
+{
+	var datetoday = new Date();
+	var timenow = datetoday.getTime();
+	datetoday.setTime(timenow);
+	var thehour = datetoday.getHours();
+	var dis; 	
+	if (thehour > 20)
+		dis = "css/night.css";
+	else if (thehour > 17)
+		dis = "css/sunset.css";
+	else if (thehour > 12)
+		dis = "css/afternoon.css";
+	else if (thehour > 7)
+		dis = "css/morning.css";
+	else if (thehour > 4)
+		dis = "css/sunrise.css";
+	else 
+		dis = "css/night.css";
+	var css = "<"; 
+	css+="link rel='stylesheet' href='" + dis + "' \/"; 
+	css+=">";
+	document.write(css);
+}
+>>>>>>> origin/master:js/script.js
 
 
 
