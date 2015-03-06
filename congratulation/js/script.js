@@ -43,10 +43,8 @@ function select_name(){
 
 function select_u_d(){
 	var name = document.getElementById('name_class').getElementsByClassName('selected');
-	console.log("1");
 	if(select_on_off)
 	{
-		console.log("2");
 		for(i = 0; i < name.length; i++)
 		{
 			name[i].className = "selected";
@@ -54,7 +52,6 @@ function select_u_d(){
 			name[i].style.left = i + 1 + "px";
 		}
 	}else{
-		console.log("3");
 		for(i = 0; i < name.length; i++)
 		{
 			name[i].className = "selected active";
@@ -67,14 +64,11 @@ function select_u_d(){
 
 function click_name(e)
 {
-	console.log(e.title);
 	var name = document.getElementById('name_class').getElementsByTagName('span');
 	for(i = 0; i < name.length; i++)
 	{
 		if(e.dataset.name != name[i].dataset.name)
 		{
-			console.log(e.dataset.name);
-			console.log(name[i].dataset.name);
 			name[i].className = "delay";
 			var x, y;
 			switch (Math.floor(Math.random() * (4))){
@@ -105,17 +99,14 @@ function click_name(e)
 function generet(name)
 {
 	var a = textJSON;
-	a.texts[0]
 	var next = a.texts[0].ligament[Math.floor(Math.random()*a.texts[0].ligament.length)];
 	while (next != 0)
 	{
-		console.log(name)
 		$("#text_class").append(a.texts[next].text.replace(new RegExp("@NAME@",'g'),name) + " ");
 		var next = a.texts[next].ligament[Math.floor(Math.random()*a.texts[next].ligament.length)];
 	}
+	document.getElementById('text_class').className = "up down";
 }
-
-
 
 
 
