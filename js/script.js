@@ -94,8 +94,8 @@ function generet()
 function xmlParser(xml) {
 	var next;
 	console.log($(xml).find("start").text());
-	$(xml).find("start").each(function () {
-		console.log($(this).find("ligament").text());
+	$(xml).find("page > *").each(function () {
+		console.log($(this).find("ligament").text().trim());
 		next = next_text($(this).find("ligament").text());
 	});
 	while(next != "Null"){
